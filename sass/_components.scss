@@ -13,6 +13,11 @@
   align-items: center;
   justify-content: center;
 
+  @media only screen and(max-width: $media-smallest) {
+    order: 1;
+    flex: 0 0 100%;
+  }
+
   &__input {
     font-family: inherit;
     font-size: inherit;
@@ -121,11 +126,28 @@
   list-style: none;
   margin-top: 3.5rem;
 
+  @media only screen and(max-width: $media-medium) {
+    display: flex;
+    margin: 0;
+  }
+
+  @media only screen and(max-width: $media-small) {
+    font-size: 1rem; 
+  }
+
   &__item {
     position: relative;
 
     &:not(:last-child) {
       margin-bottom: .5rem;
+
+      @media only screen and(max-width: $media-medium) {
+        margin: 0;
+      }
+    }
+
+    @media only screen and(max-width: $media-medium) {
+      flex: 1;
     }
   }
 
@@ -165,6 +187,21 @@
 
     display: flex;
     align-items: center;
+
+    @media only screen and(max-width: $media-medium) {
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    @media only screen and(max-width: $media-small) {
+      padding: 1.5rem;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    @media only screen and(max-width: $media-small) {
+      padding: 1rem;
+    }
   }
 
   &__icon {
@@ -172,6 +209,13 @@
     height: 1.75rem;
     margin-right: 2rem;
     fill: currentColor; // inherits the color of its parent element
+
+    @media only screen and(max-width: $media-small) {
+      margin-right: 0;
+      margin-bottom: .5rem;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
   }
 }
 
@@ -182,6 +226,10 @@
   color: var(--color-grey-light-4);
   text-align: center;
   padding: 2.5rem;
+
+  @media only screen and(max-width: $media-medium) {
+    display: none;
+  }
 }
 
 /////////////////////
@@ -201,6 +249,9 @@
   display: flex;
   border-bottom: var(--line);
   align-items: center;
+  @media only screen and(max-width: $media-smallest) {
+    justify-content: space-between;
+  }
 
   &__heading {
     font-size: 2.25rem;
@@ -208,11 +259,24 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 1.5rem 3rem;
+
+    @media only screen and(max-width: $media-small) {
+      font-size: 1.5rem;
+    }
+
+    @media only screen and(max-width: $media-smallest) {
+      font-size: 1.25rem;
+      padding: 1rem 0 1rem 1rem;
+    }
   }
 
   &__stars {
     margin-right: auto; // provides automatic spacing between the hotel name + stars and the location + rating while ONLY TAKING AS MUCH SPACE AS THE ELEMENT NEEDS
     display: flex;
+
+    @media only screen and(max-width: $media-smallest) {
+      margin-right: 0;
+    }
   }
 
   &__icon-star,
@@ -220,6 +284,11 @@
     width: 1.75rem;
     height: 1.75rem;
     fill: var(--color-primary);
+
+    @media only screen and(max-width: $media-smallest) {
+      width: 1rem;
+      height: 1rem;
+    }
   }
 
   &__location {
@@ -242,12 +311,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @media only screen and(max-width: $media-smallest) {
+      padding: 0 1rem;
+      margin-left: 0;
+    }
   }
 
   &__rating-average {
     font-size: 2.25rem;
     font-weight: 300;
     margin-bottom: -3px;
+
+    @media only screen and(max-width: $media-small) {
+      font-size: 1.5rem;
+    }
   }
 
   &__rating-count {
@@ -336,15 +414,19 @@
     margin-right: .7rem;
 
     // Older browsers
-    // background-image: url(../img/chevron-thin-right.svg);
-    // background-size: cover;
+    background-image: url(../img/chevron-thin-right.svg);
+    background-size: cover;
 
     // Newer browsers
-    background-color: var(--color-primary);
-    -webkit-mask-image: url(../img/chevron-thin-right.svg);
-    -webkit-mask-size: cover;
-    mask-image: url(../img/chevron-thin-right.svg);
-    mask-size: cover;
+    @supports (-webkit-mask-image: url()) or (mask-image: url()) {
+      background-color: var(--color-primary);
+      -webkit-mask-image: url(../img/chevron-thin-right.svg);
+      -webkit-mask-size: cover;
+      mask-image: url(../img/chevron-thin-right.svg);
+      mask-size: cover;
+      background-image: none;
+    }
+
   }
 }
 /////////////////////
@@ -356,8 +438,16 @@
   display: flex;
   align-items: center;
 
+  @media only screen and(max-width: $media-smallest) {
+    font-size: 1rem; 
+  }
+
   &__count {
     margin-right: auto;
+  }
+
+  &__friends {
+    display: flex;
   }
 
   &__photo {
@@ -368,7 +458,7 @@
     border: 3px solid #fff;
 
     &:not(:last-child) {
-      margin-right: -1.5rem;
+      margin-right: -2rem;
     }
   }
 }
@@ -382,6 +472,11 @@
   margin-bottom: 3.5rem;
   position: relative;
   overflow: hidden;
+
+  @media only screen and(max-width: $media-medium) {
+    margin-bottom: 3rem;
+    padding: 2rem;
+  }
 
   &__text {
     margin-bottom: 2rem;
@@ -410,6 +505,10 @@
     font-weight: 600;
     text-transform: uppercase;
     margin-bottom: .4rem;
+
+    @media only screen and(max-width: $media-smallest) {
+      font-size: 1rem;
+    }
   }
 
   &__user-date {
@@ -421,6 +520,10 @@
     color: var(--color-primary);
     font-size: 2.2rem;
     font-weight: 300;
+
+    @media only screen and(max-width: $media-small) {
+      font-size: 1.5rem;
+    }
   }
 
   &::before {
@@ -433,6 +536,12 @@
     font-size: 20rem;
     font-family: sans-serif;
     z-index: 1;
+
+    @media only screen and(max-width: $media-small) {
+      font-size: 14rem;
+      top: -1.75rem;
+      left: -.4rem;
+    }
   }
 }
 
@@ -443,11 +552,19 @@
   padding: 3.5rem 0;
   text-align: center;
 
+  @media only screen and(max-width: $media-medium) {
+    padding: 2.5rem 0;
+  }
+
   &__book-now {
     font-size: 2rem;
     font-weight: 300;
     text-transform: uppercase;
     margin-bottom: 2.5rem;
+
+    @media only screen and(max-width: $media-small) {
+      font-size: 1.5rem;
+    }
   }
 }
 
@@ -466,6 +583,10 @@
   overflow: hidden;
   cursor: pointer;
 
+  @media only screen and(max-width: $media-smallest) {
+    font-size: 1rem;
+  }
+
   & > * {
     display: inline-block;
     height: 100%;
@@ -475,6 +596,10 @@
 
   &__visible {
     padding: 2rem 7.5rem;
+
+    @media only screen and(max-width: $media-smallest) {
+      padding: 1.5rem 4rem;
+    }
   }
 
   &__invisible {
@@ -482,6 +607,10 @@
     padding: 2rem 0;
     left: 0;
     top: -100%;
+
+    @media only screen and(max-width: $media-smallest) {
+      padding: 1rem 0;
+    }
   }
 
   &:hover {
